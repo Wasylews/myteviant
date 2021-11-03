@@ -1,4 +1,4 @@
-package com.genius.wasylews.myteviant.common
+package com.genius.wasylews.myteviant.common.network
 
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Result

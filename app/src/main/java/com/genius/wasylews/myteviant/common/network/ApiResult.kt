@@ -2,7 +2,6 @@ package com.genius.wasylews.myteviant.common.network
 
 import android.content.Context
 import com.genius.wasylews.myteviant.R
-import com.genius.wasylews.myteviant.common.Connectivity
 import com.genius.wasylews.myteviant.common.tryCatch
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Result
@@ -27,7 +26,7 @@ class ApiResultResolver(
         return toApiResult(response, call)
     }
 
-    private fun <T> toApiResult(response: Response<T>, call: Call<*>): ApiResult<T> =
+    fun <T> toApiResult(response: Response<T>, call: Call<*>): ApiResult<T> =
         if (response.isSuccessful) {
             tryCatch { response.body()!! }
                 .mapError { toApiError(it, error = null, call, response) }
@@ -52,7 +51,7 @@ class ApiResultResolver(
         }
     }
 
-    private fun toApiError(
+    fun toApiError(
         throwable: Throwable,
         error: String?,
         call: Call<*>,

@@ -31,6 +31,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -40,12 +44,18 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
+    // ViewBinding
+    implementation 'com.github.yogacp:android-viewbinding:1.0.3'
+
     // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     // ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    // asLiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -60,13 +70,16 @@ dependencies {
 
     // Html parser
     implementation 'pl.droidsonroids:jspoon:1.3.2'
-    implementation 'pl.droidsonroids.retrofit2:converter-jspoon:1.3.2'
+    implementation 'pl.droidsonroids.retrofit2:converter-jspoon:1.0.0'
+    implementation 'org.jsoup:jsoup:1.14.3'
+
 
     // Hilt
     implementation 'com.google.dagger:hilt-android:2.40'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt 'com.google.dagger:hilt-compiler:2.40'
 
+    // Result
     implementation 'com.michael-bull.kotlin-result:kotlin-result:1.1.6'
 
     // Testing

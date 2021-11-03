@@ -1,4 +1,4 @@
-package com.genius.wasylews.myteviant.common
+package com.genius.wasylews.myteviant.common.network
 
 import android.content.Context
 import android.net.ConnectivityManager
