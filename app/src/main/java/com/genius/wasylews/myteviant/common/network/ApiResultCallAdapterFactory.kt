@@ -7,8 +7,9 @@ import okio.Timeout
 import retrofit2.*
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
+import javax.inject.Inject
 
-class ApiResultCallAdapterFactory(
+internal class ApiResultCallAdapterFactory @Inject constructor(
     private val apiResultResolver: ApiResultResolver
 ): CallAdapter.Factory() {
 
@@ -59,12 +60,12 @@ private class ApiResultCall<T>(
         call.enqueue(object : Callback<T> {
 
             override fun onResponse(call: Call<T>, response: Response<T>) {
-                val apiResult = resolver.toApiResult(response, call)
+                val apiResult = resolver.toApiResult(response)
                 callback.onResponse(this@ApiResultCall, Response.success(apiResult))
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
-                val apiError = resolver.toApiError(t, error = null, call, response = null)
+                val apiError = resolver.toApiError(t, response = null)
                 callback.onResponse(this@ApiResultCall, Response.success(Err(apiError)))
             }
         })

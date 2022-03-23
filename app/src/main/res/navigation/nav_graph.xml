@@ -8,5 +8,20 @@
     <fragment
         android:id="@+id/login"
         android:name="com.genius.wasylews.myteviant.ui.login.LoginFragment"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment">
+
+        <action
+            android:id="@+id/toMain"
+            app:destination="@id/main" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/main"
+        android:name="com.genius.wasylews.myteviant.ui.main.MainFragment"
+        tools:layout="@layout/main_fragment" >
+
+        <action
+            android:id="@+id/toLogin"
+            app:destination="@id/login" />
+    </fragment>
 </navigation>

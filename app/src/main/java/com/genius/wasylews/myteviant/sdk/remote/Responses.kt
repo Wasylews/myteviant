@@ -2,7 +2,7 @@ package com.genius.wasylews.myteviant.sdk.remote
 
 import pl.droidsonroids.jspoon.annotation.Selector
 
-internal class LoginResponse {
+internal class MainResponse {
     @Selector(".table")
     lateinit var profile: ProfileResponse
 
@@ -15,8 +15,8 @@ internal class LoginResponse {
     @Selector(".box-body")
     lateinit var tariff: TariffResponse
 
-    @Selector(".table")
-    lateinit var payment: PaymentResponse
+    @Selector(":root")
+    lateinit var paymentHistory: PaymentHistoryResponse
 }
 
 internal class ProfileResponse {
@@ -47,7 +47,7 @@ internal class TariffResponse {
     lateinit var tariffAmount: String
 }
 
-internal class PaymentResponse {
+internal class PaymentHistoryResponse {
     @Selector("div.row:nth-child(14) > div:nth-child(2)")
     lateinit var lastPaymentDate: String
 

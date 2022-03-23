@@ -49,6 +49,18 @@ class SingleLiveEvent<T> : MediatorLiveData<T>() {
         super.setValue(t)
     }
 
+    /**
+     * Used for cases where T is Void, to make calls cleaner.
+     */
+    @MainThread
+    fun call(fromMainThread: Boolean = true) {
+        if (fromMainThread) {
+            value = null
+        } else {
+            postValue(null)
+        }
+    }
+
     private class ObserverWrapper<T>(val observer: Observer<T>) : Observer<T> {
 
         private var pending = false

@@ -5,12 +5,12 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-internal interface MyTeviantApi {
+internal interface AuthApi {
 
     @POST("index.cgi")
     @FormUrlEncoded
     suspend fun login(
         @Field("user") user: String,
         @Field("passwd") password: String
-    ): ApiResult<LoginResponse>
+    ): ApiResult<MainResponse>
 }

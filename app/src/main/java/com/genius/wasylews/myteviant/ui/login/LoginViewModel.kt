@@ -1,6 +1,7 @@
 package com.genius.wasylews.myteviant.ui.login
 
 import com.genius.wasylews.myteviant.common.ui.BaseViewModel
+import com.genius.wasylews.myteviant.common.ui.SingleLiveEvent
 import com.genius.wasylews.myteviant.sdk.TeviantApi
 import com.github.michaelbull.result.onFailure
 import com.github.michaelbull.result.onSuccess
@@ -20,12 +21,13 @@ internal class LoginViewModel @Inject constructor(
     val loginEnabledFLow = usernameFlow.combine(passwordFlow) { username, password ->
         username.isNotEmpty() && password.isNotEmpty()
     }
+    val navToMainLiveEvent = SingleLiveEvent<Void>()
 
     fun login() {
         loadingFlow.trueWhileLaunch {
             repo.login(usernameFlow.value, passwordFlow.value)
                 .onSuccess {
-                    messageLiveData.value = it.status
+                    navToMainLiveEvent.call()
                 }
                 .onFailure {
                     messageLiveData.value = it.message

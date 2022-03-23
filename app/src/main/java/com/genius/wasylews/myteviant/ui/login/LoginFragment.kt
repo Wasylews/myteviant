@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.genius.wasylews.myteviant.R
 import com.genius.wasylews.myteviant.common.ui.observe
+import com.genius.wasylews.myteviant.common.ui.tryNavigate
 import com.genius.wasylews.myteviant.databinding.LoginFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,6 +51,10 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
         observe(viewModel.messageLiveData) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
+
+        observe(viewModel.navToMainLiveEvent) {
+            tryNavigate(LoginFragmentDirections.toMain())
         }
     }
 }
